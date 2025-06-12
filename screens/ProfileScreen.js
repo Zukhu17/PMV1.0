@@ -1,17 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
+// Importa la imagen local (ajusta la ruta si es necesario)
+import PerfilImg from '../assets/Perfil.png';
+
 export default function ProfileScreen() {
-  // Datos de ejemplo
-  const nombre = 'Pelao Wko';
+  const nombre = 'PelaoWeko';
   const usuario = '@Pelao123';
-  const numeroProyectos = 1;
+  const numeroProyectos = 12;
 
   return (
     <LinearGradient colors={['#4CAF50', '#00BCD4']} style={styles.container}>
       <View style={styles.photoPlaceholder}>
-        {/* Aquí luego puedes poner un <Image> o icono */}
+        <Image source={PerfilImg} style={styles.photo} />
       </View>
 
       <Text style={styles.nombre}>{nombre}</Text>
@@ -35,11 +37,17 @@ const styles = StyleSheet.create({
   photoPlaceholder: {
     width: 120,
     height: 120,
-    borderRadius: 60, // círculo
-    backgroundColor: '#bbb', // gris claro
+    borderRadius: 60,
+    backgroundColor: '#bbb',
     marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden', // importante para que la imagen quede dentro del círculo
+  },
+  photo: {
+    width: 120,
+    height: 120,
+    resizeMode: 'cover',
   },
   nombre: {
     fontSize: 26,
